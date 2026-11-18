@@ -1,5 +1,5 @@
 {
- "channel": null,
+ "channel": "@bankkursi",
  "last_rates": {
   "updated": "18.11.2026 16:02",
   "banks": [
@@ -72,5 +72,6 @@
   6,
   7
  ],
- "history": []
+ "history": [],
+ "caption_template": "💵 <b>Banklarda dollar kursi</b>\n📅 {date}, {time} holatiga\n\n👉 @bankkursi"
 }
