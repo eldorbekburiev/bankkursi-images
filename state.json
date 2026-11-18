@@ -175,17 +175,84 @@
   {
    "id": "20261118_1800",
    "posted_at": "2026-11-18T23:26:50+05:00",
-   "channel_message_id": 1078
+   "channel_message_id": 1078,
+   "rates": [
+    {
+     "name": "Agrobank",
+     "buy": 11955,
+     "sell": 12055
+    },
+    {
+     "name": "Aloqabank",
+     "buy": 11960,
+     "sell": 12060
+    },
+    {
+     "name": "Anorbank",
+     "buy": 11950,
+     "sell": 12020
+    },
+    {
+     "name": "Asakabank",
+     "buy": 11970,
+     "sell": 12020
+    },
+    {
+     "name": "Asia Alliance Bank",
+     "buy": 11955,
+     "sell": 12000
+    },
+    {
+     "name": "Hamkorbank",
+     "buy": 11950,
+     "sell": 12060
+    },
+    {
+     "name": "InFinBank",
+     "buy": 11960,
+     "sell": 12060
+    },
+    {
+     "name": "Ipak Yo‘li bank",
+     "buy": 11950,
+     "sell": 12040
+    },
+    {
+     "name": "Ipoteka-bank",
+     "buy": 11945,
+     "sell": 12070
+    },
+    {
+     "name": "Kapitalbank",
+     "buy": 11945,
+     "sell": 12025
+    },
+    {
+     "name": "Orient Finans Bank",
+     "buy": 11990,
+     "sell": 12030
+    },
+    {
+     "name": "O‘zmilliybank",
+     "buy": 11990,
+     "sell": 12060
+    },
+    {
+     "name": "Poytaxt bank",
+     "buy": 11955,
+     "sell": 12070
+    },
+    {
+     "name": "Turonbank",
+     "buy": 11960,
+     "sell": 12050
+    },
+    {
+     "name": "Xalq bank",
+     "buy": 11950,
+     "sell": 12020
+    }
+   ]
   }
- ],
- "day_series": {
-  "date": "18.11.2026",
-  "points": [
-   {
-    "time": "18:00",
-    "best_buy": 11990,
-    "best_sell": 12000
-   }
-  ]
- }
+ ]
 }
