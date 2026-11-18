@@ -9,6 +9,11 @@
     "sell": 12055
    },
    {
+    "name": "Aloqabank",
+    "buy": 11960,
+    "sell": 12060
+   },
+   {
     "name": "Anorbank",
     "buy": 11950,
     "sell": 12020
@@ -44,6 +49,11 @@
     "sell": 12070
    },
    {
+    "name": "Kapitalbank",
+    "buy": 11945,
+    "sell": 12025
+   },
+   {
     "name": "Orient Finans Bank",
     "buy": 11990,
     "sell": 12030
@@ -67,11 +77,6 @@
     "name": "Xalq bank",
     "buy": 11950,
     "sell": 12020
-   },
-   {
-    "name": "“BRB” ATB",
-    "buy": 11960,
-    "sell": 12060
    }
   ]
  },

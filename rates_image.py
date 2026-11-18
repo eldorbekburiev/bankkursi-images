@@ -31,7 +31,8 @@ SHORT = {"agrobank": "AGRO", "anorbank": "ANOR", "asakabank": "ASAKA", "asia all
          "hamkorbank": "HAMKOR", "infinbank": "INFIN", "ipoteka-bank": "IPOTEKA",
          "orient finans bank": "OFB", "o‘zmilliybank": "NBU", "turonbank": "TURON",
          "xalq bank": "XALQ", "“brb” atb": "BRB",
-         "ipak yo‘li bank": "IPAK", "poytaxt bank": "POYTAXT"}
+         "ipak yo‘li bank": "IPAK", "poytaxt bank": "POYTAXT",
+         "kapitalbank": "KAPITAL", "aloqabank": "ALOQA"}
 
 
 def initials(name):
