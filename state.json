@@ -1,7 +1,7 @@
 {
  "channel": "@bankkursi",
  "last_rates": {
-  "updated": "18.11.2026 16:02",
+  "updated": "18.11.2026 18:00",
   "banks": [
    {
     "name": "Agrobank",
@@ -34,6 +34,11 @@
     "sell": 12060
    },
    {
+    "name": "Ipak Yo‘li bank",
+    "buy": 11950,
+    "sell": 12040
+   },
+   {
     "name": "Ipoteka-bank",
     "buy": 11945,
     "sell": 12070
@@ -47,6 +52,11 @@
     "name": "O‘zmilliybank",
     "buy": 11990,
     "sell": 12060
+   },
+   {
+    "name": "Poytaxt bank",
+    "buy": 11955,
+    "sell": 12070
    },
    {
     "name": "Turonbank",

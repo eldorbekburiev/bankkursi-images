@@ -30,7 +30,8 @@ def fmt(n):
 SHORT = {"agrobank": "AGRO", "anorbank": "ANOR", "asakabank": "ASAKA", "asia alliance bank": "AAB",
          "hamkorbank": "HAMKOR", "infinbank": "INFIN", "ipoteka-bank": "IPOTEKA",
          "orient finans bank": "OFB", "o‘zmilliybank": "NBU", "turonbank": "TURON",
-         "xalq bank": "XALQ", "“brb” atb": "BRB"}
+         "xalq bank": "XALQ", "“brb” atb": "BRB",
+         "ipak yo‘li bank": "IPAK", "poytaxt bank": "POYTAXT"}
 
 
 def initials(name):
