@@ -163,7 +163,6 @@
  "pending": {
   "id": "20261118_1800",
   "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_18-11-2026_1800_v2.png",
-  "caption": "💵 <b>Banklarda dollar kursi</b>\n📅 18.11.2026, 18:00 holatiga\n\n👉 @bankkursi",
   "rates": {
    "updated": "18.11.2026 18:00",
    "banks": [
@@ -243,7 +242,9 @@
      "sell": 12020
     }
    ]
-  }
+  },
+  "date": "18.11.2026",
+  "time": "18:00"
  },
  "processed_message_ids": [
   3,
