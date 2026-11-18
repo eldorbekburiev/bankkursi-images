@@ -227,13 +227,23 @@ def render(data, out, signature="@bankkursi"):
         for key, xc, best in (("buy", (cols[2] + cols[3]) / 2, best_buy),
                               ("sell", (cols[3] + cols[4]) / 2, best_sell)):
             v = b.get(key)
-            color = GREEN if v == best else (20, 20, 20)
+            is_best = v is not None and v == best
+            color = GREEN if is_best else (20, 20, 20)
+            if is_best:  # eng qulay kurs: yashil bo'rtma katakcha
+                bx0, bx1 = xc - 84, xc + 84
+                by0, by1 = cy - 34, cy + 38
+                for yy in range(int(by0), int(by1)):
+                    t = (yy - by0) / (by1 - by0)
+                    d.line([(bx0 + 2, yy), (bx1 - 2, yy)],
+                           fill=(int(225 - 25 * t), int(247 - 15 * t), int(228 - 25 * t)))
+                d.rounded_rectangle([bx0, by0, bx1, by1], 14, outline=(34, 150, 60), width=3)
+                d.line([(bx0 + 14, by0 + 4), (bx1 - 14, by0 + 4)], fill=(250, 255, 250), width=2)
             old = pb.get(key)
             delta = (v - old) if (v and old) else 0
             if delta:
                 _text3d(d, (xc, cy - 10), fmt(v), font(30), color, depth=2)
                 up = delta > 0
-                dc = (22, 140, 60) if up else (205, 45, 45)
+                dc = (30, 90, 200) if up else (205, 45, 45)
                 tag = ("▲ +" if up else "▼ −") + fmt(abs(delta))
                 tw = d.textlength(tag, font=font(17))
                 d.rounded_rectangle([xc - tw / 2 - 8, cy + 13, xc + tw / 2 + 8, cy + 35], 10,
