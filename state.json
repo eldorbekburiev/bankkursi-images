@@ -1,6 +1,7 @@
 {
  "channel": "@bankkursi",
- "caption_template": "💵 <b>Banklarda dollar kursi</b>\n📅 {date}, {time} holatiga\n\n👉 @bankkursi",
+ "caption_first": "💵 <b>Banklarda dollar kursi</b>\n📅 {date}, {time} holatiga\n\n👉 @bankkursi",
+ "caption_update": "🔄 <b>Kurs o‘zgardi!</b>\n💵 <b>Banklarda dollar kursi</b>\n📅 {date}, {time} holatiga\n\n👉 @bankkursi",
  "banks_config": [
   {
    "name": "Agrobank",
@@ -248,7 +249,9 @@
   3,
   5,
   6,
-  7
+  7,
+  8,
+  9
  ],
  "history": []
 }
