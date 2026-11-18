@@ -115,10 +115,58 @@ def _text3d(d, xy, text, f, color, depth=3, anchor="mm"):
     d.text(xy, text, font=f, fill=color, anchor=anchor)
 
 
+def _chart(img, series, x0, y0, x1, y1):
+    """Kun davomidagi eng yaxshi sotib olish / sotish kurslari grafigi (3D kartochkada)."""
+    W, H = img.size
+    img = Image.alpha_composite(img, _shadow((W, H), [(x0, y0, x1, y1)], 16, (0, 8), 8, 95))
+    face = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    fd = ImageDraw.Draw(face)
+    fd.rounded_rectangle([x0, y0, x1, y1], 16, fill=(246, 249, 255, 245), outline=(255, 255, 255, 255), width=2)
+    img = Image.alpha_composite(img, face)
+    d = ImageDraw.Draw(img)
+    d.text((x0 + 24, y0 + 26), "KUN DAVOMIDA O‘ZGARISH", font=font(20), fill=(25, 45, 90), anchor="lm")
+    BUY_C, SELL_C = (22, 140, 60), (30, 90, 200)
+    lx = x1 - 24
+    for label, c in (("Eng yuqori sotib olish", BUY_C), ("Eng arzon sotish", SELL_C)):
+        tw = d.textlength(label, font=font(15, False))
+        d.text((lx, y0 + 26), label, font=font(15, False), fill=(40, 50, 70), anchor="rm")
+        d.rounded_rectangle([lx - tw - 34, y0 + 20, lx - tw - 10, y0 + 32], 5, fill=c)
+        lx -= tw + 54
+    px0, px1, py0, py1 = x0 + 90, x1 - 40, y0 + 62, y1 - 46
+    vals = [p["best_buy"] for p in series] + [p["best_sell"] for p in series]
+    lo, hi = min(vals), max(vals)
+    pad = max(10, (hi - lo) * 0.25)
+    lo, hi = lo - pad, hi + pad
+    Y = lambda v: py1 - (v - lo) / (hi - lo) * (py1 - py0)
+    n = len(series)
+    X = lambda i: px0 + (px1 - px0) * (i / (n - 1))
+    for k in range(5):
+        v = lo + (hi - lo) * k / 4
+        y = Y(v)
+        d.line([(px0, y), (px1, y)], fill=(215, 225, 240), width=1)
+        d.text((px0 - 12, y), fmt(int(round(v / 5) * 5)), font=font(14, False), fill=(90, 100, 120), anchor="rm")
+    for i, p in enumerate(series):
+        d.text((X(i), py1 + 22), p["time"], font=font(15), fill=(60, 70, 95), anchor="mm")
+    for key, c in (("best_buy", BUY_C), ("best_sell", SELL_C)):
+        pts = [(X(i), Y(p[key])) for i, p in enumerate(series)]
+        sh = [(x + 2, y + 4) for x, y in pts]
+        d.line(sh, fill=(180, 190, 210), width=6, joint="curve")
+        d.line(pts, fill=c, width=5, joint="curve")
+        for (x, y), p in zip(pts, series):
+            d.ellipse([x - 8, y - 8, x + 8, y + 8], fill="white", outline=c, width=4)
+        lx, ly = pts[-1]
+        d.text((lx, ly - 22 if key == "best_sell" else ly + 24), fmt(series[-1][key]),
+               font=font(17), fill=c, anchor="mm")
+    return img
+
+
 def render(data, out, signature="@bankkursi"):
     banks = data["banks"]
     W, HEAD, TH, ROW, GAP = 950, 140, 54, 96, 12
-    H = HEAD + TH + GAP + ROW * len(banks) + GAP
+    prev = {b["name"]: b for b in data.get("prev", [])}
+    series = [p for p in data.get("series", []) if p.get("best_buy") and p.get("best_sell")]
+    CH = 330 if len(series) >= 2 else 0
+    H = HEAD + TH + GAP + ROW * len(banks) + GAP + CH
     img = _background(W, H, HEAD)
     d = ImageDraw.Draw(img)
 
@@ -221,10 +269,27 @@ def render(data, out, signature="@bankkursi"):
             size -= 1
         _text3d(d, ((x0 + x1) / 2, cy), label, font(size), (255, 255, 255), depth=2)
         d.text((cols[1] + 12, cy), b["name"], font=font(25), fill=(15, 25, 50), anchor="lm")
-        for v, xc, best in ((b.get("buy"), (cols[2] + cols[3]) / 2, best_buy),
-                            (b.get("sell"), (cols[3] + cols[4]) / 2, best_sell)):
+        pb = prev.get(b["name"], {})
+        for key, xc, best in (("buy", (cols[2] + cols[3]) / 2, best_buy),
+                              ("sell", (cols[3] + cols[4]) / 2, best_sell)):
+            v = b.get(key)
             color = GREEN if v == best else (20, 20, 20)
-            _text3d(d, (xc, cy), fmt(v), font(32), color, depth=2)
+            old = pb.get(key)
+            delta = (v - old) if (v and old) else 0
+            if delta:
+                _text3d(d, (xc, cy - 10), fmt(v), font(30), color, depth=2)
+                up = delta > 0
+                dc = (22, 140, 60) if up else (205, 45, 45)
+                tag = ("▲ +" if up else "▼ −") + fmt(abs(delta))
+                tw = d.textlength(tag, font=font(17))
+                d.rounded_rectangle([xc - tw / 2 - 8, cy + 13, xc + tw / 2 + 8, cy + 35], 10,
+                                    fill=_shade(dc, 0.82), outline=_shade(dc, 0.4))
+                d.text((xc, cy + 24), tag, font=font(17), fill=dc, anchor="mm")
+            else:
+                _text3d(d, (xc, cy), fmt(v), font(32), color, depth=2)
+
+    if CH:
+        img = _chart(img, series, M, H - CH + 4, W - M, H - 14)
 
     # Suv belgisi
     wm = Image.new("RGBA", (W, H), (0, 0, 0, 0))

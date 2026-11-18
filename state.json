@@ -177,5 +177,15 @@
    "posted_at": "2026-11-18T23:26:50+05:00",
    "channel_message_id": 1078
   }
- ]
+ ],
+ "day_series": {
+  "date": "18.11.2026",
+  "points": [
+   {
+    "time": "18:00",
+    "best_buy": 11990,
+    "best_sell": 12000
+   }
+  ]
+ }
 }
