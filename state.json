@@ -1,5 +1,84 @@
 {
  "channel": "@bankkursi",
+ "caption_template": "💵 <b>Banklarda dollar kursi</b>\n📅 {date}, {time} holatiga\n\n👉 @bankkursi",
+ "banks_config": [
+  {
+   "name": "Agrobank",
+   "source": "valyutalarkursi",
+   "site_name": "Агробанк"
+  },
+  {
+   "name": "Aloqabank",
+   "source": "valyutalarkursi",
+   "site_name": "Алоқабанк"
+  },
+  {
+   "name": "Anorbank",
+   "source": "valyutalarkursi",
+   "site_name": "Анорбанк"
+  },
+  {
+   "name": "Asakabank",
+   "source": "valyutalarkursi",
+   "site_name": "Банк Асака"
+  },
+  {
+   "name": "Asia Alliance Bank",
+   "source": "valyutalarkursi",
+   "site_name": "Азия Альянс Банк"
+  },
+  {
+   "name": "Hamkorbank",
+   "source": "valyutalarkursi",
+   "site_name": "Хамкорбанк"
+  },
+  {
+   "name": "InFinBank",
+   "source": "valyutalarkursi",
+   "site_name": "ИнфинБанк"
+  },
+  {
+   "name": "Ipak Yo‘li bank",
+   "source": "ipakyulibank",
+   "url": "https://ipakyulibank.uz/physical/valyuta-ayirboshlash",
+   "note": "'Kassada' tabini bosish shart (standart 'Ilovada' kerak emas); 'AQSh dollar' qatori: Xarid=buy, Sotuv=sell; 'Valyuta kursi yangilandi' vaqti"
+  },
+  {
+   "name": "Ipoteka-bank",
+   "source": "valyutalarkursi",
+   "site_name": "Ипотека-Банк"
+  },
+  {
+   "name": "Kapitalbank",
+   "source": "valyutalarkursi",
+   "site_name": "Капиталбанк"
+  },
+  {
+   "name": "Orient Finans Bank",
+   "source": "valyutalarkursi",
+   "site_name": "Ориент Финанс Банк"
+  },
+  {
+   "name": "O‘zmilliybank",
+   "source": "valyutalarkursi",
+   "site_name": "Национальный банк"
+  },
+  {
+   "name": "Poytaxt bank",
+   "source": "valyutalarkursi",
+   "site_name": "Пойтахт Банк"
+  },
+  {
+   "name": "Turonbank",
+   "source": "valyutalarkursi",
+   "site_name": "Туронбанк"
+  },
+  {
+   "name": "Xalq bank",
+   "source": "valyutalarkursi",
+   "site_name": "Народный банк"
+  }
+ ],
  "last_rates": {
   "updated": "18.11.2026 18:00",
   "banks": [
@@ -87,6 +166,5 @@
   6,
   7
  ],
- "history": [],
- "caption_template": "💵 <b>Banklarda dollar kursi</b>\n📅 {date}, {time} holatiga\n\n👉 @bankkursi"
+ "history": []
 }
