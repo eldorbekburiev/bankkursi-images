@@ -6,7 +6,7 @@ rates.json: {"updated": "18.11.2026 12:29", "banks": [{"name": "...", "buy": 119
 import json
 import sys
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans%s.ttf"
 NAVY = (12, 38, 74)
@@ -92,86 +92,144 @@ def _background(W, H, HEAD):
     return bg
 
 
+def _shade(c, k):
+    """Rangni yorqinlashtirish (k>0) yoki to'qlashtirish (k<0)."""
+    return tuple(max(0, min(255, int(v + (255 - v) * k if k > 0 else v * (1 + k)))) for v in c[:3])
+
+
+def _shadow(size, boxes, radius, offset=(0, 8), blur=10, alpha=90):
+    """Berilgan to'rtburchaklar uchun xiralashtirilgan soya qatlami."""
+    sh = Image.new("RGBA", size, (0, 0, 0, 0))
+    sd = ImageDraw.Draw(sh)
+    for x0, y0, x1, y1 in boxes:
+        sd.rounded_rectangle([x0 + offset[0], y0 + offset[1], x1 + offset[0], y1 + offset[1]],
+                             radius, fill=(10, 30, 70, alpha))
+    return sh.filter(ImageFilter.GaussianBlur(blur))
+
+
+def _text3d(d, xy, text, f, color, depth=3, anchor="mm"):
+    """Hajmli matn: pastga-o'ngga qatlamli soya + asosiy rang."""
+    dark = _shade(color, -0.55) if color != (20, 20, 20) else (150, 165, 190)
+    for k in range(depth, 0, -1):
+        d.text((xy[0] + k, xy[1] + k), text, font=f, fill=dark, anchor=anchor)
+    d.text(xy, text, font=f, fill=color, anchor=anchor)
+
+
 def render(data, out, signature="@bankkursi"):
     banks = data["banks"]
-    W, HEAD, TH, ROW = 950, 130, 46, 94
-    H = HEAD + TH + ROW * len(banks)
+    W, HEAD, TH, ROW, GAP = 950, 140, 54, 96, 12
+    H = HEAD + TH + GAP + ROW * len(banks) + GAP
     img = _background(W, H, HEAD)
     d = ImageDraw.Draw(img)
 
-    # Sarlavha foni
+    # --- Sarlavha: yaltiroq 3D panel ---
     for y in range(HEAD):
         t = y / HEAD
         d.line([(0, y), (W, y)], fill=(int(10 + 25 * t), int(30 + 45 * t), int(70 + 60 * t)))
-    for i in range(0, W, 38):  # yengil grafik chiziqlari
-        d.line([(i, HEAD - 20 - (i * 7 % 60)), (i + 38, HEAD - 20 - ((i + 38) * 7 % 60))],
-               fill=(60, 120, 190), width=2)
-    for i in range(14):  # sarlavhadagi xira shamlar
-        x = 130 + i * 45
-        h = 8 + (i * 7) % 14
-        d.rectangle([x, HEAD - 12 - h, x + 10, HEAD - 12], fill=(40, 85, 150))
-    # Dollar belgisi
-    d.ellipse([22, 18, 116, 112], fill=(225, 230, 238), outline=(150, 160, 175), width=4)
-    d.ellipse([32, 28, 106, 102], fill=(25, 55, 120))
-    d.text((69, 65), "$", font=font(52), fill="white", anchor="mm")
-    # Matn
+    gloss = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(gloss)
+    for y in range(HEAD // 2):
+        gd.line([(0, y), (W, y)], fill=(255, 255, 255, int(38 * (1 - y / (HEAD / 2)))))
+    for i in range(0, W, 38):
+        gd.line([(i, HEAD - 22 - (i * 7 % 60)), (i + 38, HEAD - 22 - ((i + 38) * 7 % 60))],
+                fill=(90, 150, 220, 140), width=2)
+    img = Image.alpha_composite(img, gloss)
+    # sarlavha ostidagi soya chizig'i
+    img = Image.alpha_composite(img, _shadow((W, H), [(0, HEAD - 6, W, HEAD)], 0, (0, 6), 6, 120))
+    d = ImageDraw.Draw(img)
+    for y in range(HEAD - 4, HEAD):
+        d.line([(0, y), (W, y)], fill=(212, 175, 55))  # oltin chiziq
+
+    # 3D tanga
+    img = Image.alpha_composite(img, _shadow((W, H), [(26, 24, 120, 118)], 47, (4, 6), 6, 140))
+    d = ImageDraw.Draw(img)
+    for r in range(47, 0, -1):
+        t = r / 47
+        d.ellipse([73 - r, 70 - r, 73 + r, 70 + r], fill=(int(240 - 70 * t), int(205 - 70 * t), int(90 - 40 * t)))
+    d.ellipse([33, 30, 113, 110], outline=(150, 110, 30), width=3)
+    _text3d(d, (73, 70), "$", font(56), (255, 248, 220), depth=3)
+
     lines = ["BANKLARNING VALYUTA AYIRBOSHLASH SHOXOBCHALARIDA",
              "SO‘MGA NISBATAN DOLLAR KURSI",
              "US DOLLAR TO SUM EXCHANGE RATES IN BANK EXCHANGE OFFICES"]
     for i, ln in enumerate(lines):
         size = 17
-        while d.textlength(ln, font=font(size)) > 620 and size > 10:
+        while d.textlength(ln, font=font(size)) > 600 and size > 10:
             size -= 1
-        d.text((442, 34 + i * 26), ln, font=font(size), fill="white", anchor="mm")
-    # Sana qutisi
-    d.rectangle([768, 14, 930, 104], fill="white", outline=(40, 40, 40), width=3)
-    date, _, time = data["updated"].partition(" ")
-    d.text((849, 44), date, font=font(22), fill=(20, 20, 20), anchor="mm")
-    d.text((849, 74), time, font=font(26), fill=(20, 20, 20), anchor="mm")
+        d.text((447, 38 + i * 26) , ln, font=font(size), fill=(5, 15, 40), anchor="mm")
+        d.text((445, 36 + i * 26), ln, font=font(size), fill="white", anchor="mm")
 
-    # Jadval: yarim shaffof qatorlar (fon ko'rinib turadi)
-    cols = [0, 236, 546, 750, W]
-    y0 = HEAD
-    rows = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    rd = ImageDraw.Draw(rows)
-    rd.rectangle([0, y0, W, y0 + TH], fill=(255, 255, 255, 215))
-    for r in range(len(banks)):
-        top = y0 + TH + r * ROW
-        rd.rectangle([0, top, W, top + ROW], fill=(255, 255, 255, 120 if r % 2 == 0 else 70))
-    img = Image.alpha_composite(img, rows)
+    # 3D sana qutisi
+    img = Image.alpha_composite(img, _shadow((W, H), [(768, 16, 930, 112)], 12, (5, 7), 6, 150))
     d = ImageDraw.Draw(img)
+    for y in range(16, 112):
+        t = (y - 16) / 96
+        d.line([(768, y), (930, y)], fill=(int(255 - 30 * t), int(255 - 25 * t), int(255 - 15 * t)))
+    d.rounded_rectangle([768, 16, 930, 112], 12, outline=(160, 170, 190), width=2)
+    date, _, time = data["updated"].partition(" ")
+    d.text((849, 46), date, font=font(22), fill=(20, 30, 60), anchor="mm")
+    _text3d(d, (849, 80), time, font(28), (12, 38, 74), depth=2)
+
+    # --- Ustun sarlavhalari: bo'rtma panel ---
+    cols = [0, 236, 546, 750, W]
+    y0 = HEAD + 10
+    M = 12
+    img = Image.alpha_composite(img, _shadow((W, H), [(M, y0, W - M, y0 + TH - 10)], 12, (0, 5), 6, 90))
+    d = ImageDraw.Draw(img)
+    for y in range(y0, y0 + TH - 10):
+        t = (y - y0) / (TH - 10)
+        d.line([(M, y), (W - M, y)], fill=(int(250 - 25 * t), int(252 - 20 * t), int(255 - 10 * t)))
+    d.rounded_rectangle([M, y0, W - M, y0 + TH - 10], 12, outline=(190, 205, 230), width=1)
     for i, title in enumerate(["BELGI", "BANK NOMI", "SOTIB OLISH", "SOTISH"]):
-        d.text(((cols[i] + cols[i + 1]) / 2, y0 + TH / 2), title, font=font(16), fill=(30, 30, 30), anchor="mm")
+        d.text(((cols[i] + cols[i + 1]) / 2, y0 + (TH - 10) / 2), title, font=font(16), fill=(25, 45, 90), anchor="mm")
+
+    # --- Qatorlar: suzib turgan kartochkalar ---
+    top0 = HEAD + TH + GAP
+    cards = [(M, top0 + r * ROW + 6, W - M, top0 + (r + 1) * ROW - 6) for r in range(len(banks))]
+    img = Image.alpha_composite(img, _shadow((W, H), cards, 14, (0, 7), 7, 85))
+    face = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    fd = ImageDraw.Draw(face)
+    for (x0, y1, x1, y2) in cards:
+        fd.rounded_rectangle([x0, y1, x1, y2], 14, fill=(238, 244, 252, 240))
+        fd.rounded_rectangle([x0 + 2, y1 + 2, x1 - 2, y1 + (y2 - y1) * 0.48], 12, fill=(255, 255, 255, 250))
+        fd.rounded_rectangle([x0, y1, x1, y2], 14, outline=(255, 255, 255, 255), width=2)
+        fd.line([(x0 + 14, y2), (x1 - 14, y2)], fill=(150, 170, 205, 200), width=2)
+        for x in cols[1:-1]:
+            fd.line([(x, y1 + 14), (x, y2 - 14)], fill=(190, 205, 230, 220), width=2)
+    img = Image.alpha_composite(img, face)
+
+    # Bo'rtma bank belgilari (soyasi bilan)
+    badges = [(cols[0] + 28, (c[1] + c[3]) / 2 - 27, cols[1] - 22, (c[1] + c[3]) / 2 + 27) for c in cards]
+    img = Image.alpha_composite(img, _shadow((W, H), badges, 14, (3, 5), 4, 120))
+    d = ImageDraw.Draw(img)
 
     best_buy = max(b["buy"] for b in banks if b.get("buy"))
     best_sell = min(b["sell"] for b in banks if b.get("sell"))
-    for r, b in enumerate(banks):
-        top = y0 + TH + r * ROW
-        cy = top + ROW / 2
+    for r, (b, bx) in enumerate(zip(banks, badges)):
+        cy = (cards[r][1] + cards[r][3]) / 2
         c = BADGE_COLORS[r % len(BADGE_COLORS)]
-        d.rounded_rectangle([cols[0] + 22, cy - 30, cols[1] - 22, cy + 30], 16, fill=c)
+        x0, y1, x1, y2 = bx
+        for y in range(int(y1), int(y2)):
+            t = (y - y1) / (y2 - y1)
+            col = _shade(c, 0.28 * (1 - 2 * t)) if t < 0.5 else _shade(c, -0.25 * (2 * t - 1))
+            d.line([(x0 + 1, y), (x1 - 1, y)], fill=col)
+        d.rounded_rectangle([x0, y1, x1, y2], 14, outline=_shade(c, -0.35), width=2)
+        d.line([(x0 + 14, y1 + 3), (x1 - 14, y1 + 3)], fill=_shade(c, 0.5), width=2)
         label = initials(b["name"])
         size = 30
-        while d.textlength(label, font=font(size)) > cols[1] - 70 and size > 14:
+        while d.textlength(label, font=font(size)) > cols[1] - 76 and size > 14:
             size -= 1
-        d.text(((cols[0] + cols[1]) / 2, cy), label, font=font(size), fill="white", anchor="mm")
-        d.text((cols[1] + 8, cy), b["name"], font=font(25), fill=(15, 15, 15), anchor="lm")
-        d.text(((cols[2] + cols[3]) / 2, cy), fmt(b.get("buy")), font=font(32),
-               fill=GREEN if b.get("buy") == best_buy else (20, 20, 20), anchor="mm")
-        d.text(((cols[3] + cols[4]) / 2, cy), fmt(b.get("sell")), font=font(32),
-               fill=GREEN if b.get("sell") == best_sell else (20, 20, 20), anchor="mm")
-
-    # Panjara
-    for x in cols[1:-1]:
-        d.line([(x, y0), (x, H)], fill=GRID, width=2)
-    for r in range(len(banks) + 1):
-        y = y0 + TH + r * ROW
-        d.line([(0, y), (W, y)], fill=GRID, width=2)
+        _text3d(d, ((x0 + x1) / 2, cy), label, font(size), (255, 255, 255), depth=2)
+        d.text((cols[1] + 12, cy), b["name"], font=font(25), fill=(15, 25, 50), anchor="lm")
+        for v, xc, best in ((b.get("buy"), (cols[2] + cols[3]) / 2, best_buy),
+                            (b.get("sell"), (cols[3] + cols[4]) / 2, best_sell)):
+            color = GREEN if v == best else (20, 20, 20)
+            _text3d(d, (xc, cy), fmt(v), font(32), color, depth=2)
 
     # Suv belgisi
     wm = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(wm).text((W / 2, y0 + TH + ROW * len(banks) * 0.42), signature,
-                             font=font(110), fill=(150, 175, 205, 55), anchor="mm")
+    ImageDraw.Draw(wm).text((W / 2, top0 + ROW * len(banks) * 0.42), signature,
+                             font=font(110), fill=(150, 175, 205, 50), anchor="mm")
     img = Image.alpha_composite(img, wm).convert("RGB")
     img.save(out)
     return out
