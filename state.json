@@ -42,7 +42,7 @@
    "name": "Ipak Yo‘li bank",
    "source": "ipakyulibank",
    "url": "https://ipakyulibank.uz/physical/valyuta-ayirboshlash",
-   "note": "'Kassada' tabini bosish shart (standart 'Ilovada' kerak emas); 'AQSh dollar' qatori: Xarid=buy, Sotuv=sell; 'Valyuta kursi yangilandi' vaqti"
+   "note": "Repodagi `node ipak_rates.js` ni ishga tushir (u 'Kassada' tabini bosib AQSh dollar Xarid=buy, Sotuv=sell va 'Valyuta kursi yangilandi' vaqtini JSON qilib beradi). Skript ishlamasa: sahifada 'Kassada' tabini bosish shart (standart 'Ilovada' kerak emas); 'AQSh dollar' qatori: Xarid=buy, Sotuv=sell"
   },
   {
    "name": "Ipoteka-bank",
