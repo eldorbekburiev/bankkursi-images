@@ -160,7 +160,89 @@
    }
   ]
  },
- "pending": null,
+ "pending": {
+  "id": "20261119_0918",
+  "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_19-11-2026_0918.png",
+  "date": "19.11.2026",
+  "time": "09:18",
+  "rates": [
+   {
+    "name": "Agrobank",
+    "buy": 11955,
+    "sell": 12055
+   },
+   {
+    "name": "Aloqabank",
+    "buy": 11960,
+    "sell": 12060
+   },
+   {
+    "name": "Anorbank",
+    "buy": 11950,
+    "sell": 12020
+   },
+   {
+    "name": "Asakabank",
+    "buy": 11970,
+    "sell": 12020
+   },
+   {
+    "name": "Asia Alliance Bank",
+    "buy": 11955,
+    "sell": 12000
+   },
+   {
+    "name": "Hamkorbank",
+    "buy": 11950,
+    "sell": 12060
+   },
+   {
+    "name": "InFinBank",
+    "buy": 11960,
+    "sell": 12060
+   },
+   {
+    "name": "Ipak Yo‘li bank",
+    "buy": 11950,
+    "sell": 12040
+   },
+   {
+    "name": "Ipoteka-bank",
+    "buy": 11945,
+    "sell": 12070
+   },
+   {
+    "name": "Kapitalbank",
+    "buy": 11945,
+    "sell": 12025
+   },
+   {
+    "name": "Orient Finans Bank",
+    "buy": 11990,
+    "sell": 12030
+   },
+   {
+    "name": "O‘zmilliybank",
+    "buy": 11990,
+    "sell": 12060
+   },
+   {
+    "name": "Poytaxt bank",
+    "buy": 11955,
+    "sell": 12070
+   },
+   {
+    "name": "Turonbank",
+    "buy": 11960,
+    "sell": 12050
+   },
+   {
+    "name": "Xalq bank",
+    "buy": 11950,
+    "sell": 12020
+   }
+  ]
+ },
  "processed_message_ids": [
   3,
   5,
@@ -170,7 +252,9 @@
   9,
   10,
   11,
-  13
+  13,
+  14,
+  15
  ],
  "history": [
   {
