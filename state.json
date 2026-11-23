@@ -81,7 +81,7 @@
     }
   ],
   "last_rates": {
-    "updated": "23.11.2026 09:12",
+    "updated": "23.11.2026 11:00",
     "banks": [
       {
         "name": "Agrobank",
@@ -121,7 +121,7 @@
       {
         "name": "Ipak Yo‘li bank",
         "buy": 11960,
-        "sell": 12050
+        "sell": 12070
       },
       {
         "name": "Ipoteka-bank",
@@ -160,7 +160,89 @@
       }
     ]
   },
-  "pending": null,
+  "pending": {
+    "id": "20261123_1100",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_23-11-2026_1100.png",
+    "date": "23.11.2026",
+    "time": "11:00",
+    "rates": [
+      {
+        "name": "Agrobank",
+        "buy": 11960,
+        "sell": 12050
+      },
+      {
+        "name": "Aloqabank",
+        "buy": 11960,
+        "sell": 12050
+      },
+      {
+        "name": "Anorbank",
+        "buy": 11995,
+        "sell": 12060
+      },
+      {
+        "name": "Asakabank",
+        "buy": 11950,
+        "sell": 12030
+      },
+      {
+        "name": "Asia Alliance Bank",
+        "buy": 11985,
+        "sell": 12050
+      },
+      {
+        "name": "Hamkorbank",
+        "buy": 11950,
+        "sell": 12060
+      },
+      {
+        "name": "InFinBank",
+        "buy": 11960,
+        "sell": 12060
+      },
+      {
+        "name": "Ipak Yo‘li bank",
+        "buy": 11960,
+        "sell": 12070
+      },
+      {
+        "name": "Ipoteka-bank",
+        "buy": 11945,
+        "sell": 12060
+      },
+      {
+        "name": "Kapitalbank",
+        "buy": 11955,
+        "sell": 12035
+      },
+      {
+        "name": "Orient Finans Bank",
+        "buy": 11940,
+        "sell": 12020
+      },
+      {
+        "name": "O‘zmilliybank",
+        "buy": 11980,
+        "sell": 12060
+      },
+      {
+        "name": "Poytaxt bank",
+        "buy": 11945,
+        "sell": 12060
+      },
+      {
+        "name": "Turonbank",
+        "buy": 11960,
+        "sell": 12060
+      },
+      {
+        "name": "Xalq bank",
+        "buy": 11960,
+        "sell": 12060
+      }
+    ]
+  },
   "processed_message_ids": [
     3,
     5,
@@ -200,7 +282,9 @@
     44,
     45,
     46,
-    47
+    47,
+    49,
+    50
   ],
   "history": [
     {
