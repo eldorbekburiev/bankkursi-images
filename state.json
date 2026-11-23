@@ -81,7 +81,7 @@
     }
   ],
   "last_rates": {
-    "updated": "23.11.2026 11:00",
+    "updated": "23.11.2026 14:00",
     "banks": [
       {
         "name": "Agrobank",
@@ -100,8 +100,8 @@
       },
       {
         "name": "Asakabank",
-        "buy": 11950,
-        "sell": 12030
+        "buy": 11960,
+        "sell": 12040
       },
       {
         "name": "Asia Alliance Bank",
@@ -110,8 +110,8 @@
       },
       {
         "name": "Hamkorbank",
-        "buy": 11950,
-        "sell": 12060
+        "buy": 11960,
+        "sell": 12070
       },
       {
         "name": "InFinBank",
@@ -130,13 +130,13 @@
       },
       {
         "name": "Kapitalbank",
-        "buy": 11955,
-        "sell": 12035
+        "buy": 11980,
+        "sell": 12060
       },
       {
         "name": "Orient Finans Bank",
-        "buy": 11940,
-        "sell": 12020
+        "buy": 11960,
+        "sell": 12050
       },
       {
         "name": "O‘zmilliybank",
@@ -161,10 +161,10 @@
     ]
   },
   "pending": {
-    "id": "20261123_1100",
-    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_23-11-2026_1100.png",
+    "id": "20261123_1400",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_23-11-2026_1400.png",
     "date": "23.11.2026",
-    "time": "11:00",
+    "time": "14:00",
     "rates": [
       {
         "name": "Agrobank",
@@ -183,8 +183,8 @@
       },
       {
         "name": "Asakabank",
-        "buy": 11950,
-        "sell": 12030
+        "buy": 11960,
+        "sell": 12040
       },
       {
         "name": "Asia Alliance Bank",
@@ -193,8 +193,8 @@
       },
       {
         "name": "Hamkorbank",
-        "buy": 11950,
-        "sell": 12060
+        "buy": 11960,
+        "sell": 12070
       },
       {
         "name": "InFinBank",
@@ -213,13 +213,13 @@
       },
       {
         "name": "Kapitalbank",
-        "buy": 11955,
-        "sell": 12035
+        "buy": 11980,
+        "sell": 12060
       },
       {
         "name": "Orient Finans Bank",
-        "buy": 11940,
-        "sell": 12020
+        "buy": 11960,
+        "sell": 12050
       },
       {
         "name": "O‘zmilliybank",
@@ -284,7 +284,9 @@
     46,
     47,
     49,
-    50
+    50,
+    51,
+    52
   ],
   "history": [
     {
