@@ -81,7 +81,7 @@
     }
   ],
   "last_rates": {
-    "updated": "20.11.2026 19:00",
+    "updated": "23.11.2026 09:10",
     "banks": [
       {
         "name": "Agrobank",
@@ -120,7 +120,7 @@
       },
       {
         "name": "Ipak Yo‘li bank",
-        "buy": 11930,
+        "buy": 11960,
         "sell": 12050
       },
       {
@@ -161,10 +161,10 @@
     ]
   },
   "pending": {
-    "id": "20261120_1900",
-    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_20-11-2026_1900.png",
-    "date": "20.11.2026",
-    "time": "19:00",
+    "id": "20261123_0910",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_23-11-2026_0910.png",
+    "date": "23.11.2026",
+    "time": "09:10",
     "rates": [
       {
         "name": "Agrobank",
@@ -203,7 +203,7 @@
       },
       {
         "name": "Ipak Yo‘li bank",
-        "buy": 11930,
+        "buy": 11960,
         "sell": 12050
       },
       {
@@ -277,7 +277,9 @@
     37,
     38,
     39,
-    40
+    40,
+    43,
+    44
   ],
   "history": [
     {
@@ -609,6 +611,6 @@
       ]
     }
   ],
-  "last_error_date": "2026-11-20",
+  "last_error_date": "2026-11-23",
   "last_error": "valyutalarkursi_fetch_failed"
 }
