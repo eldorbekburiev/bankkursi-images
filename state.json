@@ -81,42 +81,42 @@
     }
   ],
   "last_rates": {
-    "updated": "23.11.2026 09:10",
+    "updated": "23.11.2026 09:12",
     "banks": [
       {
         "name": "Agrobank",
-        "buy": 11920,
-        "sell": 12010
+        "buy": 11960,
+        "sell": 12050
       },
       {
         "name": "Aloqabank",
-        "buy": 11920,
-        "sell": 12010
+        "buy": 11960,
+        "sell": 12050
       },
       {
         "name": "Anorbank",
-        "buy": 11960,
-        "sell": 12010
+        "buy": 11995,
+        "sell": 12060
       },
       {
         "name": "Asakabank",
-        "buy": 11940,
-        "sell": 12000
+        "buy": 11950,
+        "sell": 12030
       },
       {
         "name": "Asia Alliance Bank",
-        "buy": 11950,
-        "sell": 12010
+        "buy": 11985,
+        "sell": 12050
       },
       {
         "name": "Hamkorbank",
-        "buy": 11920,
-        "sell": 12030
+        "buy": 11950,
+        "sell": 12060
       },
       {
         "name": "InFinBank",
         "buy": 11960,
-        "sell": 12030
+        "sell": 12060
       },
       {
         "name": "Ipak Yo‘li bank",
@@ -125,8 +125,8 @@
       },
       {
         "name": "Ipoteka-bank",
-        "buy": 11915,
-        "sell": 12035
+        "buy": 11945,
+        "sell": 12060
       },
       {
         "name": "Kapitalbank",
@@ -140,66 +140,66 @@
       },
       {
         "name": "O‘zmilliybank",
-        "buy": 11950,
-        "sell": 12020
+        "buy": 11980,
+        "sell": 12060
       },
       {
         "name": "Poytaxt bank",
-        "buy": 11915,
-        "sell": 12030
+        "buy": 11945,
+        "sell": 12060
       },
       {
         "name": "Turonbank",
-        "buy": 11930,
-        "sell": 12030
+        "buy": 11960,
+        "sell": 12060
       },
       {
         "name": "Xalq bank",
-        "buy": 11920,
-        "sell": 12010
+        "buy": 11960,
+        "sell": 12060
       }
     ]
   },
   "pending": {
-    "id": "20261123_0910",
-    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_23-11-2026_0910.png",
+    "id": "20261123_0912",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_23-11-2026_0912.png",
     "date": "23.11.2026",
-    "time": "09:10",
+    "time": "09:12",
     "rates": [
       {
         "name": "Agrobank",
-        "buy": 11920,
-        "sell": 12010
+        "buy": 11960,
+        "sell": 12050
       },
       {
         "name": "Aloqabank",
-        "buy": 11920,
-        "sell": 12010
+        "buy": 11960,
+        "sell": 12050
       },
       {
         "name": "Anorbank",
-        "buy": 11960,
-        "sell": 12010
+        "buy": 11995,
+        "sell": 12060
       },
       {
         "name": "Asakabank",
-        "buy": 11940,
-        "sell": 12000
+        "buy": 11950,
+        "sell": 12030
       },
       {
         "name": "Asia Alliance Bank",
-        "buy": 11950,
-        "sell": 12010
+        "buy": 11985,
+        "sell": 12050
       },
       {
         "name": "Hamkorbank",
-        "buy": 11920,
-        "sell": 12030
+        "buy": 11950,
+        "sell": 12060
       },
       {
         "name": "InFinBank",
         "buy": 11960,
-        "sell": 12030
+        "sell": 12060
       },
       {
         "name": "Ipak Yo‘li bank",
@@ -208,8 +208,8 @@
       },
       {
         "name": "Ipoteka-bank",
-        "buy": 11915,
-        "sell": 12035
+        "buy": 11945,
+        "sell": 12060
       },
       {
         "name": "Kapitalbank",
@@ -223,23 +223,23 @@
       },
       {
         "name": "O‘zmilliybank",
-        "buy": 11950,
-        "sell": 12020
+        "buy": 11980,
+        "sell": 12060
       },
       {
         "name": "Poytaxt bank",
-        "buy": 11915,
-        "sell": 12030
+        "buy": 11945,
+        "sell": 12060
       },
       {
         "name": "Turonbank",
-        "buy": 11930,
-        "sell": 12030
+        "buy": 11960,
+        "sell": 12060
       },
       {
         "name": "Xalq bank",
-        "buy": 11920,
-        "sell": 12010
+        "buy": 11960,
+        "sell": 12060
       }
     ]
   },
@@ -279,7 +279,9 @@
     39,
     40,
     43,
-    44
+    44,
+    45,
+    46
   ],
   "history": [
     {
