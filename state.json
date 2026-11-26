@@ -81,7 +81,7 @@
     }
   ],
   "last_rates": {
-    "updated": "25.11.2026 15:10",
+    "updated": "26.11.2026 09:10",
     "banks": [
       {
         "name": "Agrobank",
@@ -90,7 +90,7 @@
       },
       {
         "name": "Aloqabank",
-        "buy": 11940,
+        "buy": 11930,
         "sell": 12030
       },
       {
@@ -121,7 +121,7 @@
       {
         "name": "Ipak Yo‘li bank",
         "buy": 11940,
-        "sell": 12050
+        "sell": 12040
       },
       {
         "name": "Ipoteka-bank",
@@ -145,8 +145,8 @@
       },
       {
         "name": "Poytaxt bank",
-        "buy": 11935,
-        "sell": 12040
+        "buy": 11930,
+        "sell": 12045
       },
       {
         "name": "Turonbank",
@@ -161,10 +161,10 @@
     ]
   },
   "pending": {
-    "id": "20261125_1510",
-    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_25-11-2026_1510.png",
-    "date": "25.11.2026",
-    "time": "15:10",
+    "id": "20261126_0910",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_26-11-2026_0910.png",
+    "date": "26.11.2026",
+    "time": "09:10",
     "rates": [
       {
         "name": "Agrobank",
@@ -173,7 +173,7 @@
       },
       {
         "name": "Aloqabank",
-        "buy": 11940,
+        "buy": 11930,
         "sell": 12030
       },
       {
@@ -204,7 +204,7 @@
       {
         "name": "Ipak Yo‘li bank",
         "buy": 11940,
-        "sell": 12050
+        "sell": 12040
       },
       {
         "name": "Ipoteka-bank",
@@ -228,8 +228,8 @@
       },
       {
         "name": "Poytaxt bank",
-        "buy": 11935,
-        "sell": 12040
+        "buy": 11930,
+        "sell": 12045
       },
       {
         "name": "Turonbank",
@@ -300,7 +300,9 @@
     64,
     65,
     66,
-    67
+    67,
+    68,
+    69
   ],
   "history": [
     {
