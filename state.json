@@ -299,7 +299,8 @@
     63,
     64,
     65,
-    66
+    66,
+    67
   ],
   "history": [
     {
@@ -959,6 +960,6 @@
       ]
     }
   ],
-  "last_error_date": "2026-11-25",
+  "last_error_date": "2026-11-26",
   "last_error": "valyutalarkursi_fetch_failed"
 }
