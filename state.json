@@ -81,7 +81,7 @@
     }
   ],
   "last_rates": {
-    "updated": "27.11.2026 14:00",
+    "updated": "27.11.2026 16:10",
     "banks": [
       {
         "name": "Agrobank",
@@ -105,8 +105,8 @@
       },
       {
         "name": "Asia Alliance Bank",
-        "buy": 11965,
-        "sell": 12020
+        "buy": 11960,
+        "sell": 12015
       },
       {
         "name": "Hamkorbank",
@@ -161,10 +161,10 @@
     ]
   },
   "pending": {
-    "id": "20261127_1400",
-    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_27-11-2026_1400.png",
+    "id": "20261127_1610",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_27-11-2026_1610.png",
     "date": "27.11.2026",
-    "time": "14:00",
+    "time": "16:10",
     "rates": [
       {
         "name": "Agrobank",
@@ -188,8 +188,8 @@
       },
       {
         "name": "Asia Alliance Bank",
-        "buy": 11965,
-        "sell": 12020
+        "buy": 11960,
+        "sell": 12015
       },
       {
         "name": "Hamkorbank",
@@ -324,7 +324,9 @@
     91,
     92,
     93,
-    94
+    94,
+    95,
+    96
   ],
   "history": [
     {
