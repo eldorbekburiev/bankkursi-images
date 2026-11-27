@@ -81,7 +81,7 @@
     }
   ],
   "last_rates": {
-    "updated": "27.11.2026 12:00",
+    "updated": "27.11.2026 14:00",
     "banks": [
       {
         "name": "Agrobank",
@@ -106,7 +106,7 @@
       {
         "name": "Asia Alliance Bank",
         "buy": 11965,
-        "sell": 12035
+        "sell": 12020
       },
       {
         "name": "Hamkorbank",
@@ -115,7 +115,7 @@
       },
       {
         "name": "InFinBank",
-        "buy": 11980,
+        "buy": 11990,
         "sell": 12050
       },
       {
@@ -126,7 +126,7 @@
       {
         "name": "Ipoteka-bank",
         "buy": 11945,
-        "sell": 12060
+        "sell": 12065
       },
       {
         "name": "Kapitalbank",
@@ -161,10 +161,10 @@
     ]
   },
   "pending": {
-    "id": "20261127_1200",
-    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_27-11-2026_1200.png",
+    "id": "20261127_1400",
+    "image_url": "https://raw.githubusercontent.com/eldorbekburiev/bankkursi-images/main/img/dollar_kursi_27-11-2026_1400.png",
     "date": "27.11.2026",
-    "time": "12:00",
+    "time": "14:00",
     "rates": [
       {
         "name": "Agrobank",
@@ -189,7 +189,7 @@
       {
         "name": "Asia Alliance Bank",
         "buy": 11965,
-        "sell": 12035
+        "sell": 12020
       },
       {
         "name": "Hamkorbank",
@@ -198,7 +198,7 @@
       },
       {
         "name": "InFinBank",
-        "buy": 11980,
+        "buy": 11990,
         "sell": 12050
       },
       {
@@ -209,7 +209,7 @@
       {
         "name": "Ipoteka-bank",
         "buy": 11945,
-        "sell": 12060
+        "sell": 12065
       },
       {
         "name": "Kapitalbank",
@@ -322,7 +322,9 @@
     89,
     90,
     91,
-    92
+    92,
+    93,
+    94
   ],
   "history": [
     {
